@@ -5,7 +5,7 @@ import SkbButton from '@skbkontur/react-ui/Button';
 
 import { storiesOf } from '@storybook/react';
 import {
-  withKnobs, text,
+  withKnobs, text, select,
 } from '@storybook/addon-knobs';
 import { Wrapper } from './Wrapper';
 
@@ -15,22 +15,34 @@ stories.addDecorator(withKnobs({ escapeHTML: false }));
 
 stories.add('Regular', () => {
   const buttonText = text('buttonText', 'Button');
+  const buttonColor = select('buttonText', ['secondary', 'primary', 'default', 'inherit'], 'default');
   return (
     <Wrapper
-      mui={(
-        <>
-          <MuiButton>{buttonText}</MuiButton>
-          <MuiButton variant="contained">{buttonText}</MuiButton>
-          <MuiButton variant="outlined">{buttonText}</MuiButton>
-        </>
-      )}
-      skb={(
-        <>
-          <SkbButton>{buttonText}</SkbButton>
-          <SkbButton>{buttonText}</SkbButton>
-          <SkbButton>{buttonText}</SkbButton>
-        </>
-      )}
+      mui={() => [
+        <MuiButton
+          color={buttonColor}
+          key="1"
+        >
+          {buttonText}
+        </MuiButton>,
+        <MuiButton
+          key="2"
+          variant="contained"
+          color={buttonColor}
+        >
+          {buttonText}
+        </MuiButton>,
+        <MuiButton
+          key="2"
+          variant="outlined"
+          color={buttonColor}
+        >
+          {buttonText}
+        </MuiButton>,
+      ]}
+      skb={() => [
+        <SkbButton key="1">{buttonText}</SkbButton>,
+      ]}
     />
   );
 });

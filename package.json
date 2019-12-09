@@ -9,13 +9,16 @@
   "scripts": {
     "test": "node index.js",
     "build": "tsc",
+    "start": "npm run storybook",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "deploy-storybook": "storybook-to-ghpages"
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {},
+  "dependencies": {
+    "lodash": "^4.17.15"
+  },
   "devDependencies": {
     "@babel/core": "^7.6.4",
     "@material-ui/core": "^4.5.2",
@@ -29,6 +32,7 @@
     "@storybook/addons": "^5.2.4",
     "@storybook/react": "^5.2.4",
     "@storybook/storybook-deployer": "^2.8.1",
+    "@types/lodash": "^4.14.149",
     "@typescript-eslint/eslint-plugin": "^2.6.1",
     "@typescript-eslint/parser": "^2.6.1",
     "awesome-typescript-loader": "^5.2.1",

@@ -16,13 +16,30 @@ npm install @anissoft/uimui
 ```js
 import React from 'react';
 import ReactDOM from 'react-dom';
-import KonturTheme from '@anissoft/uimui';
-import { ThemeProvider } from '@material-ui/core/styles';
+import uimuize from '@anissoft/uimui';
+import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
 import App from './App';
 
+const myTheme = createMuiTheme({
+  palette: {
+    primary: {
+      light: '#757ce8',
+      main: '#3f50b5',
+      dark: '#002884',
+      contrastText: '#fff',
+    },
+    secondary: {
+      light: '#ff7961',
+      main: '#f44336',
+      dark: '#ba000d',
+      contrastText: '#000',
+    },
+  },
+});
+
 ReactDOM.render(
-  <ThemeProvider theme={KonturTheme}>
+  <ThemeProvider theme={uimuize(myTheme)}>
     <App/>
   </ThemeProvider>,
   document.getElementById('root'),

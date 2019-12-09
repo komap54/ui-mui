@@ -1,23 +1,37 @@
 import React from 'react';
-import Grid from '@material-ui/core/Grid';
-import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles';
+import Grid, { GridProps } from '@material-ui/core/Grid';
+import { ThemeProvider as MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider as SkbThemeProvider } from '@skbkontur/react-ui/ThemeProvider';
 import FlatTheme from '@skbkontur/react-ui/lib/theming/themes/FlatTheme';
-import { theme } from '../src';
+import uimuize from '../src';
 
-export const Wrapper = ({ mui, skb }: { mui: React.ReactNode; skb: React.ReactNode }) => (
+const segmentProps: GridProps = {
+  item: true,
+  container: true,
+  xs: 6,
+  justify: 'center',
+  alignItems: 'center',
+  direction: 'column',
+  spacing: 2,
+};
+
+const myTheme = uimuize(createMuiTheme({}));
+
+console.log(myTheme);
+
+export const Wrapper = ({ mui, skb }: Record<'mui' | 'skb', (() => React.ReactNode[])>) => (
   <Grid container spacing={2}>
-    <Grid item container xs={6} justify="center">
-      <MuiThemeProvider theme={theme}>
-        {mui}
+    <Grid {...segmentProps}>
+      <MuiThemeProvider theme={myTheme}>
+        {mui().map((el, i) => <Grid item key={`${+i}`}>{el}</Grid>)}
       </MuiThemeProvider>
     </Grid>
-    <Grid item container xs={6} justify="center">
-      <div style={{ fontFamily: '"Segoe UI", "Helvetica Neue", sans-serif' }}>
-        <SkbThemeProvider value={FlatTheme}>
-          {skb}
-        </SkbThemeProvider>
-      </div>
+    <Grid {...segmentProps}>
+      <SkbThemeProvider value={FlatTheme}>
+        <div style={{ fontFamily: '"Segoe UI", "Helvetica Neue", sans-serif' }}>
+          {skb().map((el, i) => <Grid item key={`${+i}`}>{el}</Grid>)}
+        </div>
+      </SkbThemeProvider>
     </Grid>
   </Grid>
 );
