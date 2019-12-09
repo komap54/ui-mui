@@ -15,7 +15,13 @@ const segmentProps: GridProps = {
   spacing: 2,
 };
 
-const myTheme = uimuize(createMuiTheme({}));
+const myTheme = uimuize(createMuiTheme({
+  palette: {
+    primary: {
+      main: '#1d85d0',
+    },
+  },
+}));
 
 console.log(myTheme);
 
