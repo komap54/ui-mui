@@ -5,8 +5,10 @@ jobs:
   include:
     - stage: npm release
       node_js: "8"
+      version: 1.0
       script: npm install && npm run build
       deploy:
+        edge: true
         provider: npm
         email: anissoftkun@gmail.com
         api_key: $NPMJS_ACCESS_TOKEN
