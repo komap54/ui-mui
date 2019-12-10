@@ -17,11 +17,11 @@ npm install @anissoft/uimui
 import React from 'react';
 import ReactDOM from 'react-dom';
 import uimuize from '@anissoft/uimui';
-import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/core/styles';
 
 import App from './App';
 
-const myTheme = createMuiTheme({
+const myTheme = {
   palette: {
     primary: {
       light: '#757ce8',
@@ -36,7 +36,7 @@ const myTheme = createMuiTheme({
       contrastText: '#000',
     },
   },
-});
+};
 
 ReactDOM.render(
   <ThemeProvider theme={uimuize(myTheme)}>
