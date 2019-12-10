@@ -5,8 +5,9 @@
     "target": "es5",
     "declaration": true,
     "lib": [
+      "es2015",
       "es2016",
-      "dom",
+      "DOM"
     ],
     "listEmittedFiles": true,
     "jsx": "react",
