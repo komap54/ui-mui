@@ -12,10 +12,7 @@ jobs:
         provider: npm
         email: anissoftkun@gmail.com
         api_key: $NPMJS_ACCESS_TOKEN
-        script:
-          - "npm run build"
-          - "cp .template.npmrc $HOME/.npmrc"
-          - "npm publish"
+        script: "npm run build && cp .template.npmrc $HOME/.npmrc && npm publish"
         skip_cleanup: true
         on:
           branch: master
